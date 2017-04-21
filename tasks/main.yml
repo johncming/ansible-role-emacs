@@ -1,2 +1,13 @@
 ---
 # tasks file for emacs
+- apt_repository:
+    repo: 'ppa:kelleyk/emacs'
+    state: present
+
+- apt:
+    name: emacs25-nox
+    state: present
+
+- git:
+    repo: 'https://johncming@bitbucket.org/johncming/emacs24-starter-kit.git'
+    dest: "{{ ansible_user_dir}}/.emacs.d"
