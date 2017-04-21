@@ -5,6 +5,10 @@
     state: present
 
 - apt:
+    name: git
+    state: present
+
+- apt:
     name: emacs25-nox
     state: present
 
