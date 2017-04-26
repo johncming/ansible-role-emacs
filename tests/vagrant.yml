@@ -1,5 +1,4 @@
 ---
 - hosts: all
-  become: yes
   roles:
-    - emacs
+    - ansible-role-emacs

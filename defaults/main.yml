@@ -1,2 +1,3 @@
 ---
 # defaults file for emacs
+emacs_repo: https://github.com/johncming/emacs-config.git

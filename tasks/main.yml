@@ -3,15 +3,28 @@
 - apt_repository:
     repo: 'ppa:kelleyk/emacs'
     state: present
+  become: yes
+  when: (ansible_lsb.id|lower == "ubuntu" and ansible_distribution_version|version_compare('14.04', '=='))
 
 - apt:
     name: git
     state: present
+  become: yes
 
 - apt:
     name: emacs25-nox
     state: present
+  become: yes
+  when: (ansible_lsb.id|lower == "ubuntu" and
+    ansible_distribution_version|version_compare('14.04', '=='))
+
+- apt:
+    name: emacs-nox
+    state: present
+  become: yes
+  when: (ansible_lsb.id|lower == "ubuntu" and ansible_distribution_version|version_compare('16.04', '=='))
 
 - git:
-    repo: 'https://johncming@bitbucket.org/johncming/emacs24-starter-kit.git'
-    dest: "{{ ansible_user_dir}}/.emacs.d"
+    repo: "{{ emacs_repo }}"
+    dest: "{{ ansible_user_dir }}/.emacs.d"
+    force: yes
